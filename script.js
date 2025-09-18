@@ -1,6 +1,9 @@
-// Simple gestion de formulaire
-document.getElementById("contactForm").addEventListener("submit", function(e) {
-  e.preventDefault();
-  alert("Merci pour votre message ! Nous vous répondrons rapidement.");
-  this.reset();
+// Highlight active menu item
+const navLinks = document.querySelectorAll("header nav a");
+
+navLinks.forEach(link => {
+  link.addEventListener("click", () => {
+    navLinks.forEach(l => l.classList.remove("active"));
+    link.classList.add("active");
+  });
 });
