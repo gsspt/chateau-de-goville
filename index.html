@@ -1,81 +1,46 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Château de Goville - Maison d’hôtes</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Château de Goville</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- En-tête -->
-  <header class="site-header">
-    <div class="logo">Château de Goville</div>
-    <nav class="nav">
+  <!-- HEADER -->
+  <header>
+    <div class="logo">
+      <img src="logo.png" alt="Château de Goville Logo">
+      <span>CHÂTEAU DE GOVILLE</span>
+    </div>
+    <nav>
       <ul>
-        <li><a href="#accueil">Accueil</a></li>
-        <li><a href="#chambres">Chambres</a></li>
-        <li><a href="#galerie">Galerie</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#castle" class="active">The castle</a></li>
+        <li><a href="#rooms">The rooms</a></li>
+        <li><a href="#region">The region</a></li>
+        <li><a href="#offers">The offers</a></li>
       </ul>
     </nav>
+    <a href="#booking" class="btn">BOOKING</a>
   </header>
 
-  <!-- Section accueil -->
-  <section id="accueil" class="hero">
-    <div class="hero-content">
-      <h1>Bienvenue au Château de Goville</h1>
-      <p>Un cadre authentique et raffiné pour votre séjour en Normandie.</p>
-      <a href="#contact" class="btn">Réserver maintenant</a>
+  <!-- HERO IMAGE -->
+  <section class="hero">
+    <img src="accueil-1.png" alt="Château de Goville">
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="contact">
+      <p>44, route de Bayeux<br>14330 Breuil-en-Bessin, France</p>
+      <a href="#" class="btn">Contact us</a>
     </div>
-  </section>
-
-  <!-- Section chambres -->
-  <section id="chambres" class="chambres">
-    <h2>Nos Chambres</h2>
-    <div class="cards">
-      <div class="card">
-        <img src="images/chambre1.jpg" alt="Chambre classique">
-        <h3>Chambre Classique</h3>
-        <p>Confort et authenticité.</p>
-      </div>
-      <div class="card">
-        <img src="images/chambre2.jpg" alt="Chambre supérieure">
-        <h3>Chambre Supérieure</h3>
-        <p>Spacieuse et élégante.</p>
-      </div>
-      <div class="card">
-        <img src="images/chambre3.jpg" alt="Suite familiale">
-        <h3>Suite Familiale</h3>
-        <p>Idéale pour les séjours en famille.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Galerie -->
-  <section id="galerie" class="galerie">
-    <h2>Galerie</h2>
-    <div class="gallery-grid">
-      <img src="images/photo1.jpg" alt="">
-      <img src="images/photo2.jpg" alt="">
-      <img src="images/photo3.jpg" alt="">
-      <img src="images/photo4.jpg" alt="">
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact" class="contact">
-    <h2>Contact</h2>
-    <form id="contactForm">
-      <input type="text" name="nom" placeholder="Votre nom" required>
-      <input type="email" name="email" placeholder="Votre email" required>
-      <textarea name="message" placeholder="Votre message" required></textarea>
-      <button type="submit" class="btn">Envoyer</button>
-    </form>
-  </section>
-
-  <!-- Pied de page -->
-  <footer class="site-footer">
-    <p>&copy; 2025 Château de Goville - Tous droits réservés</p>
+    <ul class="policies">
+      <li><a href="#">Mentions légales</a></li>
+      <li><a href="#">Politique en matière de cookies</a></li>
+      <li><a href="#">Politique de confidentialité</a></li>
+      <li><a href="#">Conditions d'utilisation</a></li>
+    </ul>
   </footer>
 
   <script src="script.js"></script>
