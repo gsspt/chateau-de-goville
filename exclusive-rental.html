@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Château de Goville - The Offers</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="script.js" defer></script>
+  <style>
+    /* Styles spécifiques pour la page des offres */
+    .page-header {
+      text-align: center;
+      margin: 2rem 0 3rem;
+      padding: 0 1rem;
+    }
+    
+    .page-header h1 {
+      font-size: 2.8rem;
+      font-weight: 300;
+      color: #333;
+      margin-bottom: 1rem;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .page-header h1:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: #b28b51;
+    }
+    
+    .page-header p {
+      max-width: 700px;
+      margin: 0 auto;
+      color: #666;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+    
+    /* Section des offres spéciales */
+    .special-offers {
+      max-width: 1200px;
+      margin: 0 auto 5rem;
+      padding: 0 1rem;
+    }
+    
+    .offers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+    
+    .offer-card {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+    }
+    
+    .offer-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+    
+    .offer-badge {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: #b28b51;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      z-index: 10;
+    }
+    
+    .offer-image {
+      height: 220px;
+      overflow: hidden;
+    }
+    
+    .offer-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .offer-card:hover .offer-image img {
+      transform: scale(1.05);
+    }
+    
+    .offer-content {
+      padding: 1.5rem;
+    }
+    
+    .offer-title {
+      font-size: 1.5rem;
+      color: #333;
+      margin-bottom: 0.8rem;
+    }
+    
+    .offer-description {
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+    
+    .offer-features {
+      margin-bottom: 1.5rem;
+    }
+    
+    .offer-feature {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #555;
+      margin-bottom: 0.5rem;
+    }
+    
+    .offer-feature i {
+      color: #b28b51;
+      width: 20px;
+    }
+    
+    .offer-price {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #eee;
+    }
+    
+    .price-container {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .price-from {
+      font-size: 0.9rem;
+      color: #888;
+    }
+    
+    .price-amount {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #b28b51;
+    }
+    
+    .price-duration {
+      font-size: 0.9rem;
+      color: #888;
+    }
+    
+    /* Section location château */
+    .castle-rental {
+      max-width: 1200px;
+      margin: 0 auto 5rem;
+      padding: 0 1rem;
+    }
+    
+    .castle-rental h2 {
+      text-align: center;
+      font-size: 2.2rem;
+      font-weight: 300;
+      color: #333;
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+    
+    .castle-rental h2:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: #b28b51;
+    }
+    
+    .castle-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    }
+    
+    .castle-image {
+      flex: 1;
+      min-width: 300px;
+      height: 400px;
+    }
+    
+    .castle-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .castle-details {
+      flex: 1;
+      min-width: 300px;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    
+    .castle-details h3 {
+      font-size: 1.8rem;
+      color: #333;
+      margin-bottom: 1rem;
+    }
+    
+    .castle-description {
+      color: #666;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+    
+    .castle-features {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    
+    .castle-feature {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #555;
+    }
+    
+    .castle-feature i {
+      color: #b28b51;
+    }
+    
+    .castle-price {
+      background: #f9f5e9;
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+    }
+    
+    .castle-price p {
+      margin: 0;
+      color: #8a6d3b;
+      font-weight: 600;
+      text-align: center;
+    }
+    
+    /* Section cadeaux */
+    .gift-section {
+      max-width: 1200px;
+      margin: 0 auto 5rem;
+      padding: 0 1rem;
+    }
+    
+    .gift-section h2 {
+      text-align: center;
+      font-size: 2.2rem;
+      font-weight: 300;
+      color: #333;
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+    
+    .gift-section h2:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: #b28b51;
+    }
+    
+    .gift-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+    
+    .gift-card {
+      flex: 1;
+      min-width: 300px;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      text-align: center;
+    }
+    
+    .gift-icon {
+      font-size: 3rem;
+      color: #b28b51;
+      margin-bottom: 1.5rem;
+    }
+    
+    .gift-title {
+      font-size: 1.5rem;
+      color: #333;
+      margin-bottom: 1rem;
+    }
+    
+    .gift-description {
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+    
+    /* Section FAQ */
+    .faq-section {
+      max-width: 900px;
+      margin: 0 auto 5rem;
+      padding: 0 1rem;
+    }
+    
+    .faq-section h2 {
+      text-align: center;
+      font-size: 2.2rem;
+      font-weight: 300;
+      color: #333;
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+    
+    .faq-section h2:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: #b28b51;
+    }
+    
+    .faq-item {
+      background: #fff;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+    }
+    
+    .faq-question {
+      padding: 1.5rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #333;
+    }
+    
+    .faq-question i {
+      transition: transform 0.3s ease;
+    }
+    
+    .faq-answer {
+      padding: 0 1.5rem;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+      color: #666;
+      line-height: 1.6;
+    }
+    
+    .faq-item.active .faq-answer {
+      max-height: 300px;
+      padding: 0 1.5rem 1.5rem;
+    }
+    
+    .faq-item.active .faq-question i {
+      transform: rotate(180deg);
+    }
+    
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .offers-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .page-header h1 {
+        font-size: 2.3rem;
+      }
+      
+      .offers-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .castle-container {
+        flex-direction: column;
+      }
+      
+      .castle-image {
+        height: 300px;
+      }
+      
+      .castle-features {
+        grid-template-columns: 1fr;
+      }
+      
+      .gift-container {
+        flex-direction: column;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .page-header h1 {
+        font-size: 2rem;
+      }
+      
+      .page-header p {
+        font-size: 1rem;
+      }
+      
+      .offer-content {
+        padding: 1.25rem;
+      }
+      
+      .offer-title {
+        font-size: 1.3rem;
+      }
+      
+      .price-amount {
+        font-size: 1.5rem;
+      }
+      
+      .castle-details {
+        padding: 1.5rem;
+      }
+      
+      .castle-details h3 {
+        font-size: 1.5rem;
+      }
+      
+      .faq-section h2,
+      .gift-section h2,
+      .castle-rental h2 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="logo-title">
+      <a href="index.html">
+        <div class="logo">
+          <img src="images/logo.jpg" alt="Logo Château de Goville" class="logo">
+        </div>
+        <span class="site-name">Château de Goville</span>
+      </a>
+    </div>
+    <div class="menu-toggle" id="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">The Castle</a></li>
+        <li><a href="rooms.html">The Rooms</a></li>
+        <li><a href="region.html">The Region</a></li>
+        <li><a href="exclusive-rental.html">Exclusive Rental</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="https://www.booking.com/Share-5GEzc6" target="_blank" class="booking-btn">Booking</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-header">
+      <h1>Private Castle Rental</h1>
+      <p>The entire domain can be rented out for special events, such as mariages, family gatherings, or corporate retreats. Enjoy complete privacy in a truly exceptional setting.</p>
+    </section>
+
+      <h2></h2>
+      
+      <div class="castle-container">
+        <div class="castle-image">
+          <img src="images/chateau.jpg" alt="Private Castle Rental">
+        </div>
+        <div class="castle-details">
+          <p class="castle-description">Experience the ultimate luxury by renting the entire Château de Goville for your special event, family gathering, or corporate retreat. Enjoy complete privacy and personalized service in a truly exceptional setting.</p>
+          
+          <div class="castle-features">
+            <div class="castle-feature">
+              <i class="fas fa-bed"></i>
+              <span>10 bedrooms accommodating up to 25 guests</span>
+            </div>
+            <div class="castle-feature">
+              <i class="fas fa-tree"></i>
+              <span>Exclusive access to gardens and grounds</span>
+            </div>
+            <div class="castle-feature">
+              <i class="fas fa-glass-cheers"></i>
+              <span>Ideal for weddings and special events</span>
+            </div>
+            <div class="castle-feature">
+              <i class="fas fa-wifi"></i>
+              <span>Full property amenities</span>
+            </div>
+          </div>
+          
+          <a href="contact.html" class="btn">Details and arrangements are made directly with the owner</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-info">
+      <p>44, route de Bayeux. 14330 Breuil-en-Bessin, France</p>
+      <p>Téléphone: +33 6 70 85 03 95</p>
+    </div>
+    <div class="footer-links">
+      <a href="https://www.booking.com/Share-5GEzc6" target="_blank">
+        <i class="fas fa-calendar-days"></i>
+      </a>
+      <a href="#" target="_blank">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="contact.html" class="btn">Contact Us</a>
+    </div>
+  </footer>
+
+  <script>
+    // Script pour la page des offres
+    document.addEventListener('DOMContentLoaded', function() {
+      // Menu toggle pour mobile
+      const toggle = document.getElementById("menu-toggle");
+      const nav = document.querySelector(".main-nav");
+      
+      if (toggle && nav) {
+        toggle.addEventListener("click", function() {
+          nav.classList.toggle("active");
+          toggle.classList.toggle("active");
+        });
+      }
+      
+      // Fermer le menu en cliquant à l'extérieur
+      document.addEventListener("click", function(e) {
+        if (nav && nav.classList.contains("active") && 
+            !nav.contains(e.target) && 
+            e.target !== toggle) {
+          nav.classList.remove("active");
+          toggle.classList.remove("active");
+        }
+      });
+      
+      // FAQ accordéon
+      const faqItems = document.querySelectorAll('.faq-item');
+      
+      faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        
+        question.addEventListener('click', () => {
+          item.classList.toggle('active');
+        });
+      });
+      
+      // Animation pour les cartes d'offres
+      const offerCards = document.querySelectorAll('.offer-card');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = 1;
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      offerCards.forEach(card => {
+        card.style.opacity = 0;
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        observer.observe(card);
+      });
+    });
+  </script>
+</body>
+</html>

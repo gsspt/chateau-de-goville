@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Château de Goville - The Region</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="script.js" defer></script>
+  <style>
+
+        /* Styles carousel */
+    .hero-carousel {
+      position: relative;
+      max-width: 1200px;
+      height: 70vh;
+      min-height: 500px;
+      margin: 2rem auto;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+    
+    .carousel-container {
+      display: flex;
+      transition: transform 0.5s ease;
+      height: 100%;
+    }
+    
+    .carousel-slide {
+      min-width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    
+    .carousel-controls {
+      position: absolute;
+      bottom: 20px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      z-index: 20;
+    }
+    
+    .carousel-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .carousel-dot.active {
+      background: #fff;
+      transform: scale(1.2);
+    }
+    
+    .carousel-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      border: none;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 20;
+    }
+    
+    .carousel-nav:hover {
+      background: rgba(178, 139, 81, 0.8);
+    }
+    
+    .carousel-prev {
+      left: 20px;
+    }
+    
+    .carousel-next {
+      right: 20px;
+    }
+    
+    .carousel-caption {
+      position: absolute;
+      bottom: 80px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      color: white;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+      padding: 0 20px;
+      z-index: 15;
+    }
+    
+    .carousel-caption h2 {
+      font-size: 2.2rem;
+      font-weight: 300;
+      margin-bottom: 10px;
+    }
+    
+    .carousel-caption p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Styles spécifiques pour la page région */
+    .page-header {
+      text-align: center;
+      margin: 2rem 0 3rem;
+      padding: 0 1rem;
+    }
+    
+    .page-header h1 {
+      font-size: 2.8rem;
+      font-weight: 300;
+      color: #333;
+      margin-bottom: 1rem;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .page-header h1:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: #b28b51;
+    }
+    
+    .page-header p {
+      max-width: 800px;
+      margin: 0 auto;
+      color: #666;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+    
+    /* Section d'introduction */
+    .region-intro {
+      max-width: 1200px;
+      margin: 0 auto 4rem;
+      padding: 0 1rem;
+    }
+    
+    .region-hero {
+      position: relative;
+      height: 500px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      margin-bottom: 3rem;
+    }
+    
+    .region-hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .region-hero-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+      color: white;
+      padding: 2rem;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+    }
+    
+    .region-hero-content h2 {
+      font-size: 2.2rem;
+      font-weight: 300;
+      margin-bottom: 1rem;
+    }
+    
+    .region-description {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 2.5rem;
+      border-radius: 12px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    }
+    
+    .region-description p {
+      color: #555;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+      text-align: justify;
+    }
+    
+    /* Section activités */
+    .activities {
+      max-width: 1200px;
+      margin: 0 auto 5rem;
+      padding: 0 1rem;
+    }
+    
+    .activities h2 {
+      text-align: center;
+      font-size: 2.2rem;
+      font-weight: 300;
+      color: #333;
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+    
+    .activities h2:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: #b28b51;
+    }
+    
+    .activity-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+    
+    .activity-card {
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .activity-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+    
+    .activity-img {
+      height: 220px;
+      overflow: hidden;
+    }
+    
+    .activity-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .activity-card:hover .activity-img img {
+      transform: scale(1.05);
+    }
+    
+    .activity-content {
+      padding: 1.5rem;
+    }
+    
+    .activity-content h3 {
+      font-size: 1.4rem;
+      color: #333;
+      margin-bottom: 0.8rem;
+    }
+    
+    .activity-content p {
+      color: #666;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+    
+    .activity-details {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .activity-distance {
+      color: #8a6d3b;
+      font-weight: 600;
+    }
+    
+    /* Section gastronomie */
+    .gastronomy {
+      max-width: 1200px;
+      margin: 0 auto 5rem;
+      padding: 0 1rem;
+    }
+    
+    .gastronomy h2 {
+      text-align: center;
+      font-size: 2.2rem;
+      font-weight: 300;
+      color: #333;
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+    
+    .gastronomy h2:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: #b28b51;
+    }
+    
+    .gastronomy-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+    
+    .gastronomy-text {
+      flex: 1;
+      min-width: 300px;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    }
+    
+    .gastronomy-text p {
+      color: #555;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+    
+    .gastronomy-image {
+      flex: 1;
+      min-width: 300px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    }
+    
+    .gastronomy-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .specialties {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+    
+    .specialty-item {
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+    
+    .specialty-item:hover {
+      transform: translateY(-3px);
+    }
+    
+    .specialty-icon {
+      font-size: 2.5rem;
+      color: #b28b51;
+      margin-bottom: 1rem;
+    }
+    
+    .specialty-name {
+      font-size: 1.2rem;
+      color: #333;
+      margin-bottom: 0.5rem;
+    }
+    
+    .specialty-desc {
+      color: #666;
+      font-size: 0.95rem;
+    }
+    
+    /* Section carte */
+    .map-section {
+      max-width: 1200px;
+      margin: 0 auto 5rem;
+      padding: 0 1rem;
+    }
+    
+    .map-section h2 {
+      text-align: center;
+      font-size: 2.2rem;
+      font-weight: 300;
+      color: #333;
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+    
+    .map-section h2:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: #b28b51;
+    }
+    
+    .map-container {
+      height: 500px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+    
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    
+    .map-locations {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    .map-location {
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+    }
+    
+    .map-location h3 {
+      font-size: 1.2rem;
+      color: #333;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .map-location h3 i {
+      color: #b28b51;
+    }
+    
+    .map-location p {
+      color: #666;
+      margin-bottom: 0.5rem;
+    }
+    
+    .location-distance {
+      color: #8a6d3b;
+      font-weight: 600;
+      margin-top: 0.5rem;
+    }
+    
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .region-hero {
+        height: 400px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .page-header h1 {
+        font-size: 2.3rem;
+      }
+      
+      .region-hero {
+        height: 350px;
+      }
+      
+      .region-hero-content h2 {
+        font-size: 1.8rem;
+      }
+      
+      .region-description {
+        padding: 2rem 1.5rem;
+      }
+      
+      .activity-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .gastronomy-content {
+        flex-direction: column;
+      }
+      
+      .map-container {
+        height: 400px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .page-header h1 {
+        font-size: 2rem;
+      }
+      
+      .page-header p {
+        font-size: 1rem;
+      }
+      
+      .region-hero {
+        height: 300px;
+      }
+      
+      .region-hero-content {
+        padding: 1.5rem;
+      }
+      
+      .region-hero-content h2 {
+        font-size: 1.5rem;
+      }
+      
+      .region-description {
+        padding: 1.5rem 1rem;
+      }
+      
+      .activities h2,
+      .gastronomy h2,
+      .map-section h2 {
+        font-size: 1.8rem;
+      }
+      
+      .map-container {
+        height: 300px;
+     }
+     
+    }
+
+    @media (max-width: 1024px) {
+      .hero-carousel {
+        height: 60vh;
+      }
+      
+      .carousel-caption h2 {
+        font-size: 1.8rem;
+      }
+      
+      .carousel-caption p {
+        font-size: 1.1rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .hero-carousel {
+        height: 50vh;
+        min-height: 400px;
+        margin: 1rem;
+      }
+      
+      .carousel-nav {
+        width: 40px;
+        height: 40px;
+      }
+      
+      .carousel-caption {
+        bottom: 60px;
+      }
+      
+      .carousel-caption h2 {
+        font-size: 1.5rem;
+      }
+      
+      .carousel-caption p {
+        font-size: 1rem;
+      }
+    }
+
+     @media (max-width: 480px) {
+      .hero-carousel {
+        height: 40vh;
+        min-height: 300px;
+      }
+      
+      .carousel-nav {
+        width: 35px;
+        height: 35px;
+      }
+      
+      .carousel-caption {
+        bottom: 50px;
+      }
+      
+      .carousel-caption h2 {
+        font-size: 1.3rem;
+      }
+      
+      .carousel-caption p {
+        display: none;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="logo-title">
+      <a href="index.html">
+        <div class="logo">
+          <img src="images/logo.jpg" alt="Logo Château de Goville" class="logo">
+        </div>
+        <span class="site-name">Château de Goville</span>
+      </a>
+    </div>
+    <div class="menu-toggle" id="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">The Castle</a></li>
+        <li><a href="rooms.html">The Rooms</a></li>
+        <li><a href="region.html">The Region</a></li>
+        <li><a href="exclusive-rental.html">Exclusive Rental</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="https://www.booking.com/Share-5GEzc6" target="_blank" class="booking-btn">Booking</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-header">
+      <h1>Discover Normandy</h1>
+    </section>
+
+    <section class="region-intro">
+
+      <section class="hero-carousel">
+      <div class="carousel-container" id="carousel">
+        <div class="carousel-slide">
+          <img src="images/saintmichel2.jpg" alt="Vue du château">
+        </div>
+        <div class="carousel-slide">
+          <img src="images/cimetiere1.jpg" alt="Grand salon">
+        </div>
+        <div class="carousel-slide">
+          <img src="images/cathedrale.jpg" alt="Jardin du château">
+        </div>
+        <div class="carousel-slide">
+          <img src="images/tapisserie.jpg" alt="Chambre d'hôte">
+        </div>
+      </div>
+      
+      <button class="carousel-nav carousel-prev">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button class="carousel-nav carousel-next">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+      
+      <div class="carousel-controls">
+        <div class="carousel-dot active"></div>
+        <div class="carousel-dot"></div>
+        <div class="carousel-dot"></div>
+        <div class="carousel-dot"></div>
+      </div>
+    </section>
+      
+      <div class="region-description">
+        <p>Located in the heart of Normandy, the Château de Goville is your perfect base to explore one of France's most captivating regions. Normandy is a land of contrasts, where dramatic white cliffs meet peaceful apple orchards, and medieval towns stand alongside D-Day landing beaches.</p>
+        
+        <p>Our region is steeped in history, from William the Conqueror to the Impressionist painters who found inspiration in our extraordinary light. Today, Normandy continues to captivate visitors with its rich culinary heritage, featuring world-renowned cheeses, cider, and seafood.</p>
+        
+        <p>Whether you're interested in history, nature, gastronomy, or simply relaxing in beautiful surroundings, Normandy offers an array of experiences that will make your stay at Château de Goville truly unforgettable.</p>
+      </div>
+    </section>
+
+    <section class="activities">
+      <h2>Activities & Discoveries</h2>
+      
+      <div class="activity-grid">
+        <div class="activity-card">
+          <div class="activity-img">
+            <img src="images/dday.jpeg" alt="Plages du Débarquement">
+          </div>
+          <div class="activity-content">
+            <h3>D-Day Landing Beaches</h3>
+            <p>Walk in the footsteps of history along the famous D-Day beaches where Allied forces landed in 1944. Visit museums, memorials, and cemeteries that pay tribute to this pivotal moment in world history.</p>
+            <div class="activity-details">
+              <span class="activity-distance">45 min drive</span>
+              <a href="#" class="btn-secondary">Learn More</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="activity-card">
+          <div class="activity-img">
+            <img src="images/saintmichel1.jpg" alt="Mont Saint-Michel">
+          </div>
+          <div class="activity-content">
+            <h3>Mont Saint-Michel</h3>
+            <p>Discover the magical island commune of Mont Saint-Michel, a UNESCO World Heritage site. This breathtaking abbey seems to float on the water during high tide, creating an unforgettable spectacle.</p>
+            <div class="activity-details">
+              <span class="activity-distance">2h drive</span>
+              <a href="#" class="btn-secondary">Learn More</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="activity-card">
+          <div class="activity-img">
+            <img src="images/honfleur.jpg" alt="Honfleur">
+          </div>
+          <div class="activity-content">
+            <h3>Historic Honfleur</h3>
+            <p>Explore the charming port town of Honfleur with its picturesque harbor, narrow streets, and half-timbered houses. This artist's haven inspired many Impressionist painters including Monet.</p>
+            <div class="activity-details">
+              <span class="activity-distance">1h drive</span>
+              <a href="#" class="btn-secondary">Learn More</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="activity-card">
+          <div class="activity-img">
+            <img src="images/paysdauge.jpg" alt="Pays d'Auge">
+          </div>
+          <div class="activity-content">
+            <h3>Pays d'Auge Route</h3>
+            <p>Follow the scenic Route du Cidre through the heart of Normandy's apple country. Visit traditional half-timbered farms, taste local cider and calvados, and sample authentic Camembert cheese.</p>
+            <div class="activity-details">
+              <span class="activity-distance">30 min drive</span>
+              <a href="#" class="btn-secondary">Learn More</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="activity-card">
+          <div class="activity-img">
+            <img src="images/tapisserie2.jpg" alt="Bayeux">
+          </div>
+          <div class="activity-content">
+            <h3>Bayeux Tapestry</h3>
+            <p>Marvel at the extraordinary Bayeux Tapestry, an 11th-century embroidered cloth nearly 70 meters long that depicts the events leading up to the Norman conquest of England.</p>
+            <div class="activity-details">
+              <span class="activity-distance">20 min drive</span>
+              <a href="#" class="btn-secondary">Learn More</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="activity-card">
+          <div class="activity-img">
+            <img src="images/etretat.jpg" alt="Falaises d'Étretat">
+          </div>
+          <div class="activity-content">
+            <h3>Étretat Cliffs</h3>
+            <p>Experience the dramatic white chalk cliffs and natural arches of Étretat, a spectacular coastline that has inspired artists and writers for centuries. Enjoy breathtaking walks along the clifftops.</p>
+            <div class="activity-details">
+              <span class="activity-distance">1h45 drive</span>
+              <a href="#" class="btn-secondary">Learn More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="map-section">
+      <h2>Explore the Region</h2>
+      
+      <div class="map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d208297.60!2d-0.88!3d49.28!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e0!2sCh%C3%A2teau%20de%20Goville!5e0!3m2!1sfr!2sfr!4v1234567890" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-info">
+      <p>44, route de Bayeux. 14330 Breuil-en-Bessin, France</p>
+      <p>Téléphone: +33 6 70 85 03 95</p>
+    </div>
+    <div class="footer-links">
+      <a href="https://www.booking.com/Share-5GEzc6" target="_blank">
+        <i class="fas fa-calendar-days"></i>
+      </a>
+      <a href="#" target="_blank">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="contact.html" class="btn">Contact Us</a>
+    </div>
+  </footer>
+
+  <script>
+    // Script pour la page région
+    document.addEventListener('DOMContentLoaded', function() {
+      // Menu toggle pour mobile
+      const toggle = document.getElementById("menu-toggle");
+      const nav = document.querySelector(".main-nav");
+      
+      if (toggle && nav) {
+        toggle.addEventListener("click", function() {
+          nav.classList.toggle("active");
+          toggle.classList.toggle("active");
+        });
+      }
+      
+      // Fermer le menu en cliquant à l'extérieur
+      document.addEventListener("click", function(e) {
+        if (nav && nav.classList.contains("active") && 
+            !nav.contains(e.target) && 
+            e.target !== toggle) {
+          nav.classList.remove("active");
+          toggle.classList.remove("active");
+        }
+      });
+      
+      // Animation pour les cartes d'activités
+      const activityCards = document.querySelectorAll('.activity-card');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = 1;
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      activityCards.forEach(card => {
+        card.style.opacity = 0;
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        observer.observe(card);
+      });
+    });
+
+    // Script pour le carrousel
+    document.addEventListener('DOMContentLoaded', function() {
+      const carousel = document.getElementById('carousel');
+      const slides = document.querySelectorAll('.carousel-slide');
+      const dots = document.querySelectorAll('.carousel-dot');
+      const prevBtn = document.querySelector('.carousel-prev');
+      const nextBtn = document.querySelector('.carousel-next');
+      
+      let currentIndex = 0;
+      let autoPlayInterval;
+      
+      // Fonction pour mettre à jour le carrousel
+      function updateCarousel() {
+        carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+        
+        // Mettre à jour les points indicateurs
+        dots.forEach((dot, index) => {
+          dot.classList.toggle('active', index === currentIndex);
+        });
+      }
+      
+      // Aller à un slide spécifique
+      function goToSlide(index) {
+        currentIndex = index;
+        if (currentIndex < 0) currentIndex = slides.length - 1;
+        if (currentIndex >= slides.length) currentIndex = 0;
+        updateCarousel();
+        resetAutoPlay();
+      }
+      
+      // Slide suivant
+      function nextSlide() {
+        goToSlide(currentIndex + 1);
+      }
+      
+      // Slide précédent
+      function prevSlide() {
+        goToSlide(currentIndex - 1);
+      }
+      
+      // Configuration du défilement automatique
+      function startAutoPlay() {
+        autoPlayInterval = setInterval(nextSlide, 5000);
+      }
+      
+      // Réinitialiser le défilement automatique
+      function resetAutoPlay() {
+        clearInterval(autoPlayInterval);
+        startAutoPlay();
+      }
+      
+      // Événements pour les boutons de navigation
+      nextBtn.addEventListener('click', nextSlide);
+      prevBtn.addEventListener('click', prevSlide);
+      
+      // Événements pour les points indicateurs
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => goToSlide(index));
+      });
+      
+      // Démarrer le défilement automatique
+      startAutoPlay();
+      
+      // Mettre en pause le défilement automatique quand la souris est sur le carrousel
+      carousel.addEventListener('mouseenter', () => {
+        clearInterval(autoPlayInterval);
+      });
+      
+      // Reprendre le défilement automatique quand la souris quitte le carrousel
+      carousel.addEventListener('mouseleave', () => {
+        startAutoPlay();
+      });
+    });
+  </script>
+</body>
+</html>

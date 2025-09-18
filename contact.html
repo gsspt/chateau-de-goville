@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Château de Goville - Contact</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="script.js" defer></script>
+  <style>
+    /* Styles spécifiques pour la page de contact */
+    .page-header {
+      text-align: center;
+      margin: 2rem 0 3rem;
+      padding: 0 1rem;
+    }
+    
+    .page-header h1 {
+      font-size: 2.8rem;
+      font-weight: 300;
+      color: #333;
+      margin-bottom: 1rem;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .page-header h1:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: #b28b51;
+    }
+    
+    .page-header p {
+      max-width: 700px;
+      margin: 0 auto;
+      color: #666;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+    
+    /* Section de contact principale */
+    .contact-container {
+      max-width: 1200px;
+      margin: 0 auto 5rem;
+      padding: 0 1rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 3rem;
+    }
+    
+    /* Informations de contact */
+    .contact-info {
+      background: #fff;
+      padding: 2.5rem;
+      border-radius: 12px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+      height: fit-content;
+    }
+    
+    .contact-info h2 {
+      font-size: 1.8rem;
+      color: #333;
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    .contact-info h2:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: #b28b51;
+    }
+    
+    .contact-details {
+      margin-bottom: 2rem;
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .contact-icon {
+      width: 40px;
+      height: 40px;
+      background: #f0e6d3;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #b28b51;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    
+    .contact-text h3 {
+      font-size: 1.1rem;
+      color: #333;
+      margin-bottom: 0.3rem;
+    }
+    
+    .contact-text p {
+      color: #666;
+      line-height: 1.5;
+    }
+    
+    .contact-text a {
+      color: #666;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .contact-text a:hover {
+      color: #b28b51;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    
+    .social-link {
+      width: 45px;
+      height: 45px;
+      background: #f5f5f5;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #666;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+    }
+    
+    .social-link:hover {
+      background: #b28b51;
+      color: white;
+      transform: translateY(-3px);
+    }
+    
+    /* Formulaire de contact */
+    .contact-form {
+      background: #fff;
+      padding: 2.5rem;
+      border-radius: 12px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    }
+    
+    .contact-form h2 {
+      font-size: 1.8rem;
+      color: #333;
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    .contact-form h2:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: #b28b51;
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #333;
+      font-weight: 500;
+    }
+    
+    .form-input,
+    .form-textarea {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 1rem;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .form-input:focus,
+    .form-textarea:focus {
+      outline: none;
+      border-color: #b28b51;
+      box-shadow: 0 0 0 3px rgba(178, 139, 81, 0.1);
+    }
+    
+    .form-textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+    
+    .form-submit {
+      background: #b28b51;
+      color: white;
+      border: none;
+      padding: 0.8rem 2rem;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    
+    .form-submit:hover {
+      background: #a27c44;
+    }
+    
+    /* Carte */
+    .map-section {
+      max-width: 1200px;
+      margin: 0 auto 5rem;
+      padding: 0 1rem;
+    }
+    
+    .map-section h2 {
+      text-align: center;
+      font-size: 2.2rem;
+      font-weight: 300;
+      color: #333;
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+    
+    .map-section h2:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: #b28b51;
+    }
+    
+    .map-container {
+      height: 450px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+    
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    
+    /* FAQ de contact */
+    .contact-faq {
+      max-width: 900px;
+      margin: 0 auto 5rem;
+      padding: 0 1rem;
+    }
+    
+    .contact-faq h2 {
+      text-align: center;
+      font-size: 2.2rem;
+      font-weight: 300;
+      color: #333;
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+    
+    .contact-faq h2:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: #b28b51;
+    }
+    
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+      gap: 1.5rem;
+    }
+    
+    .faq-card {
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+    }
+    
+    .faq-card h3 {
+      font-size: 1.2rem;
+      color: #333;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .faq-card h3 i {
+      color: #b28b51;
+    }
+    
+    .faq-card p {
+      color: #666;
+      line-height: 1.6;
+    }
+    
+    /* Horaires */
+    .opening-hours {
+      margin-top: 2rem;
+      background: #f9f5e9;
+      padding: 1.5rem;
+      border-radius: 8px;
+    }
+    
+    .opening-hours h3 {
+      font-size: 1.2rem;
+      color: #333;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .opening-hours h3 i {
+      color: #b28b51;
+    }
+    
+    .hours-list {
+      list-style: none;
+    }
+    
+    .hours-list li {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #e8dfca;
+    }
+    
+    .hours-list li:last-child {
+      border-bottom: none;
+    }
+    
+    .day {
+      color: #333;
+      font-weight: 500;
+    }
+    
+    .time {
+      color: #666;
+    }
+    
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .contact-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      
+      .faq-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .page-header h1 {
+        font-size: 2.3rem;
+      }
+      
+      .contact-info,
+      .contact-form {
+        padding: 2rem;
+      }
+      
+      .map-container {
+        height: 350px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .page-header h1 {
+        font-size: 2rem;
+      }
+      
+      .page-header p {
+        font-size: 1rem;
+      }
+      
+      .contact-info,
+      .contact-form {
+        padding: 1.5rem;
+      }
+      
+      .contact-item {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      
+      .contact-icon {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+      }
+      
+      .map-container {
+        height: 300px;
+      }
+      
+      .map-section h2,
+      .contact-faq h2 {
+        font-size: 1.8rem;
+      }
+      
+      .faq-card {
+        padding: 1.25rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="logo-title">
+      <a href="index.html">
+        <div class="logo">
+          <img src="images/logo.jpg" alt="Logo Château de Goville" class="logo">
+        </div>
+        <span class="site-name">Château de Goville</span>
+      </a>
+    </div>
+    <div class="menu-toggle" id="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">The Castle</a></li>
+        <li><a href="rooms.html">The Rooms</a></li>
+        <li><a href="region.html">The Region</a></li>
+        <li><a href="exclusive-rental.html">Exclusive Rental</a></li>
+        <li><a href="https://www.booking.com/Share-5GEzc6" target="_blank" class="booking-btn">Booking</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-header">
+      <h1>Contact Us</h1>
+    </section>
+
+    <div class="contact-container">
+      <div class="contact-info">
+        <h2>Get in Touch</h2>
+        
+        <div class="contact-details">
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="contact-text">
+              <h3>Address</h3>
+              <p>44, route de Bayeux<br>14330 Breuil-en-Bessin, France</p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-phone"></i>
+            </div>
+            <div class="contact-text">
+              <h3>Phone</h3>
+              <p><a href="tel:+33670850395">+33 6 70 85 03 95</a></p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="contact-text">
+              <h3>Email</h3>
+              <p><a href="mailto:jeanmariepot1963@gmail.com">jeanmariepot1963@gmail.com</a></p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-calendar-days"></i>
+            </div>
+            <div class="contact-text">
+              <h3>Booking</h3>
+              <p><a href="https://www.booking.com/Share-5GEzc6" target="_blank">Reserve on Booking.com</a></p>
+            </div>
+          </div>
+        </div>
+        
+        
+        <div class="social-links">
+          <a href="#" class="social-link">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="#" class="social-link">
+            <i class="fab fa-google"></i>
+          </a>
+        </div>
+      </div>
+      
+      <div class="contact-form">
+        <h2>Send a Message</h2>
+        <form id="contactForm" action="https://formspree.io/f/mvojnqkk" method="POST">
+          <div class="form-group">
+            <label for="name" class="form-label">Your Name</label>
+            <input type="text" id="name" name="name" class="form-input" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="email" class="form-label">Email Address</label>
+            <input type="email" id="email" name="email" class="form-input" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="phone" class="form-label">Phone Number (optional)</label>
+            <input type="tel" id="phone" name="phone" class="form-input">
+          </div>
+          
+          <div class="form-group">
+            <label for="subject" class="form-label">Subject</label>
+            <input type="text" id="subject" name="subject" class="form-input" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="message" class="form-label">Your Message</label>
+            <textarea id="message" name="message" class="form-textarea" required></textarea>
+          </div>
+          
+          <button type="submit" class="form-submit">Send Message</button>
+        </form>
+      </div>
+    </div>
+
+    <section class="map-section">
+      <h2>Find Us</h2>
+      <div class="map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d208297.60!2d-0.88!3d49.28!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e0!2sCh%C3%A2teau%20de%20Goville!5e0!3m2!1sfr!2sfr!4v1234567890" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-info">
+      <p>44, route de Bayeux. 14330 Breuil-en-Bessin, France</p>
+      <p>Téléphone: +33 6 70 85 03 95</p>
+    </div>
+    <div class="footer-links">
+      <a href="https://www.booking.com/Share-5GEzc6" target="_blank">
+        <i class="fas fa-calendar-days"></i>
+      </a>
+      <a href="#" target="_blank">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="contact.html" class="btn">Contact Us</a>
+    </div>
+  </footer>
+
+  <script>
+    // Script pour la page de contact
+    document.addEventListener('DOMContentLoaded', function() {
+      // Menu toggle pour mobile
+      const toggle = document.getElementById("menu-toggle");
+      const nav = document.querySelector(".main-nav");
+      
+      if (toggle && nav) {
+        toggle.addEventListener("click", function() {
+          nav.classList.toggle("active");
+          toggle.classList.toggle("active");
+        });
+      }
+      
+      // Fermer le menu en cliquant à l'extérieur
+      document.addEventListener("click", function(e) {
+        if (nav && nav.classList.contains("active") && 
+            !nav.contains(e.target) && 
+            e.target !== toggle) {
+          nav.classList.remove("active");
+          toggle.classList.remove("active");
+        }
+      });
+      
+      // Gestion du formulaire de contact
+      const contactForm = document.getElementById('contactForm');
+      
+      if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+          // Ici vous pouvez ajouter une validation supplémentaire si nécessaire
+          // Cette version utilise Formspree pour la gestion des formulaires
+          
+          // Afficher un message de confirmation
+          const submitButton = contactForm.querySelector('.form-submit');
+          const originalText = submitButton.textContent;
+          
+          submitButton.textContent = 'Sending...';
+          submitButton.disabled = true;
+          
+          // Simuler l'envoi pour la démonstration
+          setTimeout(function() {
+            alert('Thank you for your message! We will get back to you as soon as possible.');
+            contactForm.reset();
+            submitButton.textContent = originalText;
+            submitButton.disabled = false;
+          }, 1500);
+          
+          // Pour une mise en production réelle, vous voudrez retirer la ligne e.preventDefault()
+          // et laisser Formspree gérer la soumission du formulaire
+          e.preventDefault();
+        });
+      }
+      
+      // Animation pour les cartes FAQ
+      const faqCards = document.querySelectorAll('.faq-card');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = 1;
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      faqCards.forEach(card => {
+        card.style.opacity = 0;
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        observer.observe(card);
+      });
+    });
+  </script>
+</body>
+</html>

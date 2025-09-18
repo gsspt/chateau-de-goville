@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Château de Goville - The Rooms</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="script.js" defer></script>
+  <style>
+    /* Styles spécifiques pour la page des chambres */
+    .page-header {
+      text-align: center;
+      margin: 2rem 0 3rem;
+      padding: 0 1rem;
+    }
+    
+    .page-header h1 {
+      font-size: 2.8rem;
+      font-weight: 300;
+      color: #333;
+      margin-bottom: 1rem;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .page-header h1:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: #b28b51;
+    }
+    
+    .page-header p {
+      max-width: 700px;
+      margin: 0 auto;
+      color: #666;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+    
+    /* Section des chambres */
+    .rooms-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    
+    .room {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+      margin-bottom: 4rem;
+    }
+    
+    .room-carousel {
+      position: relative;
+      height: 500px;
+      overflow: hidden;
+    }
+    
+    .room-carousel-container {
+      display: flex;
+      transition: transform 0.5s ease;
+      height: 100%;
+    }
+    
+    .room-carousel-slide {
+      min-width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .room-carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    
+    .room-carousel-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 20;
+    }
+    
+    .room-carousel-nav:hover {
+      background: rgba(178, 139, 81, 0.8);
+    }
+    
+    .room-carousel-prev {
+      left: 15px;
+    }
+    
+    .room-carousel-next {
+      right: 15px;
+    }
+    
+    .room-carousel-controls {
+      position: absolute;
+      bottom: 15px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      z-index: 20;
+    }
+    
+    .room-carousel-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .room-carousel-dot.active {
+      background: #fff;
+      transform: scale(1.2);
+    }
+    
+    .room-content {
+      padding: 2rem;
+    }
+    
+    .room-title {
+      font-size: 1.8rem;
+      color: #333;
+      margin-bottom: 1rem;
+      font-weight: 400;
+    }
+    
+    .room-type {
+      display: inline-block;
+      background: #f0e6d3;
+      color: #8a6d3b;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .room-description {
+      color: #666;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+    
+    .room-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    
+    .room-feature {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #555;
+    }
+    
+    .room-feature i {
+      color: #b28b51;
+    }
+    
+    .room-actions {
+      display: flex;
+      gap: 1rem;
+    }
+    
+    .btn-secondary {
+      background: transparent;
+      color: #b28b51;
+      border: 1px solid #b28b51;
+      padding: 0.75rem 1.5rem;
+      border-radius: 4px;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-secondary:hover {
+      background: #b28b51;
+      color: #fff;
+    }
+    
+    /* Section équipements */
+    .amenities {
+      max-width: 1200px;
+      margin: 5rem auto;
+      padding: 0 1rem;
+    }
+    
+    .amenities h2 {
+      text-align: center;
+      font-size: 2.2rem;
+      font-weight: 300;
+      color: #333;
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+    
+    .amenities h2:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: #b28b51;
+    }
+    
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+    
+    .amenity-item {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .amenity-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+    
+    .amenity-icon {
+      font-size: 2.5rem;
+      color: #b28b51;
+      margin-bottom: 1rem;
+    }
+    
+    .amenity-name {
+      font-size: 1.2rem;
+      color: #333;
+      margin-bottom: 0.5rem;
+    }
+    
+    .amenity-desc {
+      color: #666;
+      font-size: 0.95rem;
+    }
+    
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .room-carousel {
+        height: 450px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .page-header h1 {
+        font-size: 2.3rem;
+      }
+      
+      .room-carousel {
+        height: 400px;
+      }
+      
+      .room-content {
+        padding: 1.5rem;
+      }
+      
+      .room-title {
+        font-size: 1.6rem;
+      }
+      
+      .room-actions {
+        flex-direction: column;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .page-header h1 {
+        font-size: 2rem;
+      }
+      
+      .page-header p {
+        font-size: 1rem;
+      }
+      
+      .room-carousel {
+        height: 350px;
+      }
+      
+      .room-carousel-nav {
+        width: 35px;
+        height: 35px;
+      }
+      
+      .amenities h2 {
+        font-size: 1.8rem;
+      }
+      
+      .amenities-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="logo-title">
+      <a href="index.html">
+        <div class="logo">
+          <img src="images/logo.jpg" alt="Logo Château de Goville" class="logo">
+        </div>
+        <span class="site-name">Château de Goville</span>
+      </a>
+    </div>
+    <div class="menu-toggle" id="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">The Castle</a></li>
+        <li><a href="rooms.html">The Rooms</a></li>
+        <li><a href="region.html">The Region</a></li>
+        <li><a href="exclusive-rental.html">Exclusive Rental</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="https://www.booking.com/Share-5GEzc6" target="_blank" class="booking-btn">Booking</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-header">
+      <h1>Our Rooms</h1>
+      <p>Discover our exquisite rooms, historically preserved and fitted out with modern comfort.</p>
+    </section>
+
+    <div class="rooms-container">
+      <!-- Chambre Commandant -->
+      <article class="room">
+        <div class="room-carousel" id="room1-carousel">
+          <div class="room-carousel-container">
+            <div class="room-carousel-slide">
+              <img src="images/commandant1.jpg" alt="Chambre Commandant - Vue 1">
+            </div>
+            <div class="room-carousel-slide">
+              <img src="images/commandant2.jpg" alt="Chambre Commandant - Vue 2">
+            </div>
+            <div class="room-carousel-slide">
+              <img src="images/commandant3.jpg" alt="Chambre Commandant - Vue 3">
+            </div>
+            <div class="room-carousel-slide">
+              <img src="images/commandant4.jpg" alt="Chambre Commandant - Vue 4">
+            </div>
+          </div>
+          
+          <button class="room-carousel-nav room-carousel-prev">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="room-carousel-nav room-carousel-next">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+          
+          <div class="room-carousel-controls">
+            <div class="room-carousel-dot active"></div>
+            <div class="room-carousel-dot"></div>
+            <div class="room-carousel-dot"></div>
+            <div class="room-carousel-dot"></div>
+          </div>
+        </div>
+        
+        <div class="room-content">
+          <h2 class="room-title">Commandant</h2>
+          <span class="room-type">Deluxe Double Room with Shower</span>
+          
+          <p class="room-description">
+            Named after a distinguished military commander who once resided here, this spacious room features high ceilings, original hardwood floors, and a luxurious en-suite bathroom with marble finishes. The large windows offer a stunning view of the castle gardens.
+          </p>
+          
+          <div class="room-actions">
+            <a href="https://www.booking.com/Share-5GEzc6" target="_blank" class="btn">Book Now</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Chambre Député -->
+      <article class="room">
+        <div class="room-carousel" id="room2-carousel">
+          <div class="room-carousel-container">
+            <div class="room-carousel-slide">
+              <img src="images/depute1.jpg" alt="Chambre Député - Vue 1">
+            </div>
+            <div class="room-carousel-slide">
+              <img src="images/depute2.jpg" alt="Chambre Député - Vue 2">
+            </div>
+            <div class="room-carousel-slide">
+              <img src="images/depute3.jpg" alt="Chambre Député - Vue 3">
+            </div>
+            <div class="room-carousel-slide">
+              <img src="images/depute4.jpg" alt="Chambre Député - Vue 4">
+            </div>
+            <div class="room-carousel-slide">
+              <img src="images/depute5.jpg" alt="Chambre Député - Vue 5">
+            </div>
+          </div>
+          
+          <button class="room-carousel-nav room-carousel-prev">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="room-carousel-nav room-carousel-next">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+          
+          <div class="room-carousel-controls">
+            <div class="room-carousel-dot active"></div>
+            <div class="room-carousel-dot"></div>
+            <div class="room-carousel-dot"></div>
+            <div class="room-carousel-dot"></div>
+            <div class="room-carousel-dot"></div>
+          </div>
+        </div>
+        
+        <div class="room-content">
+          <h2 class="room-title">Député</h2>
+          <span class="room-type">Deluxe Double Room with Shower</span>
+          
+          <p class="room-description">
+            This elegantly appointed room is named after a former member of parliament who frequently visited the castle. It features a four-poster bed, antique furnishings, and a beautifully tiled bathroom. The room overlooks the courtyard and offers a peaceful retreat.
+          </p>
+          
+          <div class="room-actions">
+            <a href="https://www.booking.com/Share-5GEzc6" target="_blank" class="btn">Book Now</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Chambre de la Reine Hortense -->
+      <article class="room">
+        <div class="room-carousel" id="room3-carousel">
+          <div class="room-carousel-container">
+            <div class="room-carousel-slide">
+              <img src="images/hortense1.jpg" alt="Chambre Reine Hortense - Vue 1">
+            </div>
+            <div class="room-carousel-slide">
+              <img src="images/hortense2.jpg" alt="Chambre Reine Hortense - Vue 2">
+            </div>
+            <div class="room-carousel-slide">
+              <img src="images/hortense3.jpg" alt="Chambre Reine Hortense - Vue 3">
+            </div>
+            <div class="room-carousel-slide">
+              <img src="images/hortense4.jpg" alt="Chambre Reine Hortense - Vue 4">
+            </div>
+            <div class="room-carousel-slide">
+              <img src="images/hortense5.jpg" alt="Chambre Reine Hortense - Vue 5">
+            </div>
+          </div>
+          
+          <button class="room-carousel-nav room-carousel-prev">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="room-carousel-nav room-carousel-next">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+          
+          <div class="room-carousel-controls">
+            <div class="room-carousel-dot active"></div>
+            <div class="room-carousel-dot"></div>
+            <div class="room-carousel-dot"></div>
+            <div class="room-carousel-dot"></div>
+            <div class="room-carousel-dot"></div>
+          </div>
+        </div>
+        
+        <div class="room-content">
+          <h2 class="room-title">Reine Hortense</h2>
+          <span class="room-type">Double Room with Bath</span>
+          
+          <p class="room-description">
+            This majestic room is named after Queen Hortense, who allegedly stayed here during her travels through Normandy. The room features a luxurious freestanding bathtub, silk draperies, and a canopy bed. The elegant decor pays homage to the room's royal history.
+          </p>
+    
+          <div class="room-actions">
+            <a href="https://www.booking.com/Share-5GEzc6" target="_blank" class="btn">Book Now</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Chambre Madeleine -->
+      <article class="room">
+        <div class="room-carousel" id="room4-carousel">
+          <div class="room-carousel-container">
+            <div class="room-carousel-slide">
+              <img src="images/madeleine1.jpg" alt="Chambre Madeleine - Vue 1">
+            </div>
+            <div class="room-carousel-slide">
+              <img src="images/madeleine2.jpg" alt="Chambre Madeleine - Vue 2">
+            </div>
+            <div class="room-carousel-slide">
+              <img src="images/madeleine3.jpg" alt="Chambre Madeleine - Vue 3">
+            </div>
+            <div class="room-carousel-slide">
+              <img src="images/madeleine4.jpg" alt="Chambre Madeleine - Vue 4">
+            </div>
+          </div>
+          
+          <button class="room-carousel-nav room-carousel-prev">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="room-carousel-nav room-carousel-next">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+          
+          <div class="room-carousel-controls">
+            <div class="room-carousel-dot active"></div>
+            <div class="room-carousel-dot"></div>
+            <div class="room-carousel-dot"></div>
+            <div class="room-carousel-dot"></div>
+          </div>
+        </div>
+        
+        <div class="room-content">
+          <h2 class="room-title">Madeleine</h2>
+          <span class="room-type">Double Room with Bath</span>
+          
+          <p class="room-description">
+            Named after the castle's original owner's daughter, this charming room combines rustic elegance with modern comforts. Exposed wooden beams, a clawfoot tub, and floral patterns create a cozy atmosphere. The room offers a view of the surrounding countryside.
+          </p>
+          
+          <div class="room-actions">
+            <a href="https://www.booking.com/Share-5GEzc6" target="_blank" class="btn">Book Now</a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+  <footer class="site-footer">
+    <div class="footer-info">
+      <p>44, route de Bayeux. 14330 Breuil-en-Bessin, France</p>
+      <p>Téléphone: +33 6 70 85 03 95</p>
+    </div>
+    <div class="footer-links">
+      <a href="https://www.booking.com/Share-5GEzc6" target="_blank">
+        <i class="fas fa-calendar-days"></i>
+      </a>
+      <a href="#" target="_blank">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="contact.html" class="btn">Contact Us</a>
+    </div>
+  </footer>
+
+  <script>
+    // Script pour les carrousels des chambres
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialiser tous les carrousels des chambres
+      initRoomCarousels();
+      
+      // Menu toggle pour mobile
+      const toggle = document.getElementById("menu-toggle");
+      const nav = document.querySelector(".main-nav");
+      
+      if (toggle && nav) {
+        toggle.addEventListener("click", function() {
+          nav.classList.toggle("active");
+          toggle.classList.toggle("active");
+        });
+      }
+      
+      // Fermer le menu en cliquant à l'extérieur
+      document.addEventListener("click", function(e) {
+        if (nav && nav.classList.contains("active") && 
+            !nav.contains(e.target) && 
+            e.target !== toggle) {
+          nav.classList.remove("active");
+          toggle.classList.remove("active");
+        }
+      });
+    });
+    
+    function initRoomCarousels() {
+      const roomCarousels = document.querySelectorAll('.room-carousel');
+      
+      roomCarousels.forEach(function(carousel) {
+        const container = carousel.querySelector('.room-carousel-container');
+        const slides = carousel.querySelectorAll('.room-carousel-slide');
+        const dots = carousel.querySelectorAll('.room-carousel-dot');
+        const prevBtn = carousel.querySelector('.room-carousel-prev');
+        const nextBtn = carousel.querySelector('.room-carousel-next');
+        
+        let currentIndex = 0;
+        let autoPlayInterval;
+        
+        // Fonction pour mettre à jour le carrousel
+        function updateCarousel() {
+          container.style.transform = `translateX(-${currentIndex * 100}%)`;
+          
+          // Mettre à jour les points indicateurs
+          dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentIndex);
+          });
+        }
+        
+        // Aller à un slide spécifique
+        function goToSlide(index) {
+          currentIndex = index;
+          if (currentIndex < 0) currentIndex = slides.length - 1;
+          if (currentIndex >= slides.length) currentIndex = 0;
+          updateCarousel();
+          resetAutoPlay();
+        }
+        
+        // Slide suivant
+        function nextSlide() {
+          goToSlide(currentIndex + 1);
+        }
+        
+        // Slide précédent
+        function prevSlide() {
+          goToSlide(currentIndex - 1);
+        }
+        
+        // Configuration du défilement automatique
+        function startAutoPlay() {
+          autoPlayInterval = setInterval(nextSlide, 5000);
+        }
+        
+        // Réinitialiser le défilement automatique
+        function resetAutoPlay() {
+          clearInterval(autoPlayInterval);
+          startAutoPlay();
+        }
+        
+        // Événements pour les boutons de navigation
+        if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+        if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+        
+        // Événements pour les points indicateurs
+        dots.forEach((dot, index) => {
+          dot.addEventListener('click', () => goToSlide(index));
+        });
+        
+        // Démarrer le défilement automatique
+        startAutoPlay();
+        
+        // Mettre en pause le défilement automatique quand la souris est sur le carrousel
+        carousel.addEventListener('mouseenter', () => {
+          clearInterval(autoPlayInterval);
+        });
+        
+        // Reprendre le défilement automatique quand la souris quitte le carrousel
+        carousel.addEventListener('mouseleave', () => {
+          startAutoPlay();
+        });
+      });
+    }
+  </script>
+</body>
+</html>
