@@ -6,7 +6,7 @@
 }
 
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Helvetica';
   background: #fff;
   color: #000;
   line-height: 1.6;
@@ -40,12 +40,14 @@ body {
 }
 
 .logo {
-  max-height: 70px;
+  max-height: 90px;
   width: auto;
   object-fit: contain;
 }
 
 .site-name {
+  font-family: 'Garamond';
+  font-variant: small-caps;
   font-weight: 200;
   font-size: 1.6rem;
   margin-left: 0.8rem;
@@ -53,8 +55,22 @@ body {
   letter-spacing: 0.5px;
 }
 
+.separation{
+	clear: both;
+	position:relative;
+	margin-top :10px;
+	margin-left: 15px;
+  margin-bottom: 10px;
+	height: 60px;
+	width : 0.1px;
+	background: rgba(0, 0, 0, 0.8);
+	}
+
 /* ----------- NAVIGATION ----------- */
 .main-nav ul {
+  font-family: 'Garamond';
+  font-variant: small-caps;
+  font-size: 1.2rem;
   list-style: none;
   display: flex;
   gap: 2rem;
@@ -107,13 +123,13 @@ main {
 /* ----------- CONTACT PAGE ----------- */
 .contact-info {
   text-align: center;
-  margin-bottom: 2rem;
+  margin: 1rem;
   padding: 1rem;
 }
 
 .contact-form {
   max-width: 600px;
-  margin: 0 auto 3rem;
+  margin: 1rem;
   padding: 2rem;
   border: 1px solid #eee;
   border-radius: 8px;
@@ -376,6 +392,7 @@ main {
 /* ----------- BOUTONS ----------- */
 .btn {
   background: #b28b51;
+  width: fit-content;
   color: #fff;
   padding: 0.75rem 1.5rem;
   border-radius: 4px;
