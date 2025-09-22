@@ -129,6 +129,7 @@
     }
     
     .page-header h1 {
+      font-family: 'Garamond';
       font-size: 2.8rem;
       font-weight: 300;
       color: #333;
@@ -149,7 +150,8 @@
     }
     
     .page-header p {
-      max-width: 800px;
+      text-align: justify;
+      max-width: 70rem;
       margin: 0 auto;
       color: #666;
       font-size: 1.1rem;
@@ -220,6 +222,7 @@
     }
     
     .activities h2 {
+      font-family: 'Garamond';
       text-align: center;
       font-size: 2.2rem;
       font-weight: 300;
@@ -279,6 +282,9 @@
     }
     
     .activity-content h3 {
+      font-family: 'Garamond';
+      font-style: italic;
+      font-weight: normal;
       font-size: 1.4rem;
       color: #333;
       margin-bottom: 0.8rem;
@@ -301,105 +307,6 @@
       font-weight: 600;
     }
     
-    /* Section gastronomie */
-    .gastronomy {
-      max-width: 1200px;
-      margin: 0 auto 5rem;
-      padding: 0 1rem;
-    }
-    
-    .gastronomy h2 {
-      text-align: center;
-      font-size: 2.2rem;
-      font-weight: 300;
-      color: #333;
-      margin-bottom: 2.5rem;
-      position: relative;
-    }
-    
-    .gastronomy h2:after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 3px;
-      background: #b28b51;
-    }
-    
-    .gastronomy-content {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      margin-bottom: 3rem;
-    }
-    
-    .gastronomy-text {
-      flex: 1;
-      min-width: 300px;
-      background: #fff;
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-    }
-    
-    .gastronomy-text p {
-      color: #555;
-      line-height: 1.8;
-      margin-bottom: 1.5rem;
-    }
-    
-    .gastronomy-image {
-      flex: 1;
-      min-width: 300px;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-    }
-    
-    .gastronomy-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    
-    .specialties {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 1.5rem;
-    }
-    
-    .specialty-item {
-      background: #fff;
-      padding: 1.5rem;
-      border-radius: 8px;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-      text-align: center;
-      transition: transform 0.3s ease;
-    }
-    
-    .specialty-item:hover {
-      transform: translateY(-3px);
-    }
-    
-    .specialty-icon {
-      font-size: 2.5rem;
-      color: #b28b51;
-      margin-bottom: 1rem;
-    }
-    
-    .specialty-name {
-      font-size: 1.2rem;
-      color: #333;
-      margin-bottom: 0.5rem;
-    }
-    
-    .specialty-desc {
-      color: #666;
-      font-size: 0.95rem;
-    }
-    
     /* Section carte */
     .map-section {
       max-width: 1200px;
@@ -408,6 +315,7 @@
     }
     
     .map-section h2 {
+      font-family: 'Garamond';
       text-align: center;
       font-size: 2.2rem;
       font-weight: 300;
@@ -624,6 +532,7 @@
         <div class="logo">
           <img src="images/logo.jpg" alt="Logo Château de Goville" class="logo">
         </div>
+        <hr class="separation" />
         <span class="site-name">Château de Goville</span>
       </a>
     </div>
@@ -635,7 +544,7 @@
     <nav class="main-nav">
       <ul>
         <li><a href="index.html">The Castle</a></li>
-        <li><a href="rooms.html">The Rooms</a></li>
+        <li><a href="rooms.html">Our Rooms</a></li>
         <li><a href="region.html">The Region</a></li>
         <li><a href="exclusive-rental.html">Exclusive Rental</a></li>
         <li><a href="contact.html">Contact Us</a></li>
@@ -647,6 +556,10 @@
   <main>
     <section class="page-header">
       <h1>Discover Normandy</h1>
+      <br>
+      <br>
+      <p>Located in the heart of Normandy, the Château de Goville is a perfect base to explore one of France's most captivating regions. Normandy is a land of contrasts, where dramatic white cliffs meet peaceful apple orchards, and medieval towns stand alongside the D-Day landing beaches.</p>
+      <p>Whether you're interested in history, nature, gastronomy, or simply relaxing in beautiful surroundings, Normandy offers an array of experiences that will make your stay at Château de Goville truly unforgettable.</p>
     </section>
 
     <section class="region-intro">
@@ -682,29 +595,21 @@
       </div>
     </section>
       
-      <div class="region-description">
-        <p>Located in the heart of Normandy, the Château de Goville is your perfect base to explore one of France's most captivating regions. Normandy is a land of contrasts, where dramatic white cliffs meet peaceful apple orchards, and medieval towns stand alongside D-Day landing beaches.</p>
-        
-        <p>Our region is steeped in history, from William the Conqueror to the Impressionist painters who found inspiration in our extraordinary light. Today, Normandy continues to captivate visitors with its rich culinary heritage, featuring world-renowned cheeses, cider, and seafood.</p>
-        
-        <p>Whether you're interested in history, nature, gastronomy, or simply relaxing in beautiful surroundings, Normandy offers an array of experiences that will make your stay at Château de Goville truly unforgettable.</p>
-      </div>
+      
     </section>
 
     <section class="activities">
-      <h2>Activities & Discoveries</h2>
       
       <div class="activity-grid">
         <div class="activity-card">
           <div class="activity-img">
-            <img src="images/dday.jpeg" alt="Plages du Débarquement">
+            <img src="images/dday.jpg" alt="Plages du Débarquement">
           </div>
           <div class="activity-content">
             <h3>D-Day Landing Beaches</h3>
             <p>Walk in the footsteps of history along the famous D-Day beaches where Allied forces landed in 1944. Visit museums, memorials, and cemeteries that pay tribute to this pivotal moment in world history.</p>
             <div class="activity-details">
               <span class="activity-distance">45 min drive</span>
-              <a href="#" class="btn-secondary">Learn More</a>
             </div>
           </div>
         </div>
@@ -717,12 +622,24 @@
             <h3>Mont Saint-Michel</h3>
             <p>Discover the magical island commune of Mont Saint-Michel, a UNESCO World Heritage site. This breathtaking abbey seems to float on the water during high tide, creating an unforgettable spectacle.</p>
             <div class="activity-details">
-              <span class="activity-distance">2h drive</span>
-              <a href="#" class="btn-secondary">Learn More</a>
+              <span class="activity-distance">1h30 drive</span>
             </div>
           </div>
         </div>
-        
+
+        <div class="activity-card">
+          <div class="activity-img">
+            <img src="images/museedior.jpg" alt="Pays d'Auge">
+          </div>
+          <div class="activity-content">
+            <h3>Christian Dior Museum</h3>
+            <p>Step into the world of haute couture at the childhood home of Christian Dior. This elegant villa and its magnificent seaside gardens, known as "Les Rhumbs," were the legendary designer's first source of inspiration and are now a museum dedicated to his life and legacy.</p>
+            <div class="activity-details">
+              <span class="activity-distance">30 min drive</span>
+            </div>
+          </div>
+        </div>
+
         <div class="activity-card">
           <div class="activity-img">
             <img src="images/honfleur.jpg" alt="Honfleur">
@@ -732,24 +649,11 @@
             <p>Explore the charming port town of Honfleur with its picturesque harbor, narrow streets, and half-timbered houses. This artist's haven inspired many Impressionist painters including Monet.</p>
             <div class="activity-details">
               <span class="activity-distance">1h drive</span>
-              <a href="#" class="btn-secondary">Learn More</a>
             </div>
           </div>
         </div>
         
-        <div class="activity-card">
-          <div class="activity-img">
-            <img src="images/paysdauge.jpg" alt="Pays d'Auge">
-          </div>
-          <div class="activity-content">
-            <h3>Pays d'Auge Route</h3>
-            <p>Follow the scenic Route du Cidre through the heart of Normandy's apple country. Visit traditional half-timbered farms, taste local cider and calvados, and sample authentic Camembert cheese.</p>
-            <div class="activity-details">
-              <span class="activity-distance">30 min drive</span>
-              <a href="#" class="btn-secondary">Learn More</a>
-            </div>
-          </div>
-        </div>
+
         
         <div class="activity-card">
           <div class="activity-img">
@@ -760,7 +664,6 @@
             <p>Marvel at the extraordinary Bayeux Tapestry, an 11th-century embroidered cloth nearly 70 meters long that depicts the events leading up to the Norman conquest of England.</p>
             <div class="activity-details">
               <span class="activity-distance">20 min drive</span>
-              <a href="#" class="btn-secondary">Learn More</a>
             </div>
           </div>
         </div>
@@ -774,7 +677,6 @@
             <p>Experience the dramatic white chalk cliffs and natural arches of Étretat, a spectacular coastline that has inspired artists and writers for centuries. Enjoy breathtaking walks along the clifftops.</p>
             <div class="activity-details">
               <span class="activity-distance">1h45 drive</span>
-              <a href="#" class="btn-secondary">Learn More</a>
             </div>
           </div>
         </div>
@@ -782,10 +684,9 @@
     </section>
 
     <section class="map-section">
-      <h2>Explore the Region</h2>
       
       <div class="map-container">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d208297.60!2d-0.88!3d49.28!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e0!2sCh%C3%A2teau%20de%20Goville!5e0!3m2!1sfr!2sfr!4v1234567890" allowfullscreen="" loading="lazy"></iframe>
+        <iframe src="https://www.google.com/maps/d/embed?mid=1cwukn6G7Eo1wub86K3bYbEDMWlmBVdo&hl=fr&ehbc=2E312F" width="640" height="480"></iframe>
       </div>
     </section>
   </main>
@@ -798,6 +699,9 @@
     <div class="footer-links">
       <a href="https://www.booking.com/Share-5GEzc6" target="_blank">
         <i class="fas fa-calendar-days"></i>
+      </a>
+      <a href="https://www.airbnb.fr/rooms/1112399489799271770?source_impression_id=p3_1758533973_P3EJMYrQAM7NyoXZ" target="_blank">
+        <i class="fa-brands fa-airbnb"></i>
       </a>
       <a href="#" target="_blank">
         <i class="fab fa-instagram"></i>
