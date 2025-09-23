@@ -37,6 +37,8 @@
     }
     
     .page-header p {
+      text-align: justify;
+      text-indent: 3%;
       max-width: 700px;
       margin: 0 auto;
       color: #666;
@@ -164,6 +166,8 @@
     }
     
     .room-description {
+      text-align: justify;
+      text-indent: 3%;
       color: #666;
       line-height: 1.7;
       margin-bottom: 1.5rem;
@@ -280,10 +284,19 @@
     }
     
     @media (max-width: 768px) {
+      .page-header {
+        margin: 1.5rem 0 2rem;
+      }
+      
       .page-header h1 {
         font-size: 2.3rem;
       }
       
+      .page-header p {
+        font-size: 1rem;
+        text-align: justify;
+        padding: 0 0.5rem;
+      }
       .room-carousel {
         height: 400px;
       }
@@ -309,17 +322,14 @@
     }
     
     @media (max-width: 480px) {
-      .page-header {
-        margin: 1rem 0 2rem;
-      }
-      
       .page-header h1 {
         font-size: 2rem;
       }
       
       .page-header p {
-        font-size: 1rem;
-        padding: 0 0.5rem;
+        text-align: justify;
+        font-size: 0.95rem;
+        line-height: 1.5;
       }
       
       .room-carousel {
@@ -432,6 +442,7 @@
       <div class="titles">
         <h1>Our Rooms</h1>
       </div>
+      <br>
       <p>Discover our exquisite rooms, historically preserved and fitted out with modern comfort. Available from the <b>1st of June to the 31st of August</b>, through <b>Booking</b>, <b>Airbnb</b> or by <b>contacting the owner</b> directly.</p>
     </section>
 
