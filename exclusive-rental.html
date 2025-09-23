@@ -3,12 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Château de Goville - The Offers</title>
+  <title>Château de Goville - Exclusive Rental</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="script.js" defer></script>
   <style>
-    /* Styles spécifiques pour la page des offres */
     .page-header {
       text-align: center;
       margin: 2rem 0 3rem;
@@ -44,150 +43,10 @@
       line-height: 1.6;
     }
     
-    /* Section des offres spéciales */
-    .special-offers {
-      max-width: 1200px;
-      margin: 0 auto 5rem;
-      padding: 0 1rem;
-    }
-    
-    .offers-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-      gap: 2rem;
-    }
-    
-    .offer-card {
-      background: #fff;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      position: relative;
-    }
-    
-    .offer-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    }
-    
-    .offer-badge {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background: #b28b51;
-      color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      z-index: 10;
-    }
-    
-    .offer-image {
-      height: 220px;
-      overflow: hidden;
-    }
-    
-    .offer-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-    
-    .offer-card:hover .offer-image img {
-      transform: scale(1.05);
-    }
-    
-    .offer-content {
-      padding: 1.5rem;
-    }
-    
-    .offer-title {
-      font-size: 1.5rem;
-      color: #333;
-      margin-bottom: 0.8rem;
-    }
-    
-    .offer-description {
-      color: #666;
-      line-height: 1.6;
-      margin-bottom: 1.5rem;
-    }
-    
-    .offer-features {
-      margin-bottom: 1.5rem;
-    }
-    
-    .offer-feature {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: #555;
-      margin-bottom: 0.5rem;
-    }
-    
-    .offer-feature i {
-      color: #b28b51;
-      width: 20px;
-    }
-    
-    .offer-price {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 1.5rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid #eee;
-    }
-    
-    .price-container {
-      display: flex;
-      flex-direction: column;
-    }
-    
-    .price-from {
-      font-size: 0.9rem;
-      color: #888;
-    }
-    
-    .price-amount {
-      font-size: 1.8rem;
-      font-weight: 600;
-      color: #b28b51;
-    }
-    
-    .price-duration {
-      font-size: 0.9rem;
-      color: #888;
-    }
-    
-    /* Section location château */
     .castle-rental {
       max-width: 1200px;
       margin: 0 auto 5rem;
       padding: 0 1rem;
-    }
-    
-    .castle-rental h2 {
-      text-align: center;
-      font-size: 2.2rem;
-      font-weight: 300;
-      color: #333;
-      margin-bottom: 2.5rem;
-      position: relative;
-    }
-    
-    .castle-rental h2:after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 3px;
-      background: #b28b51;
     }
     
     .castle-container {
@@ -251,179 +110,52 @@
       color: #b28b51;
     }
     
-    .castle-price {
-      background: #f9f5e9;
-      padding: 1.5rem;
-      border-radius: 8px;
-      margin-bottom: 1.5rem;
-    }
-    
-    .castle-price p {
-      margin: 0;
-      color: #8a6d3b;
-      font-weight: 600;
-      text-align: center;
-    }
-    
-    /* Section cadeaux */
-    .gift-section {
-      max-width: 1200px;
-      margin: 0 auto 5rem;
-      padding: 0 1rem;
-    }
-    
-    .gift-section h2 {
-      text-align: center;
-      font-size: 2.2rem;
-      font-weight: 300;
-      color: #333;
-      margin-bottom: 2.5rem;
-      position: relative;
-    }
-    
-    .gift-section h2:after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 3px;
-      background: #b28b51;
-    }
-    
-    .gift-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-    }
-    
-    .gift-card {
-      flex: 1;
-      min-width: 300px;
-      background: #fff;
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-      text-align: center;
-    }
-    
-    .gift-icon {
-      font-size: 3rem;
-      color: #b28b51;
-      margin-bottom: 1.5rem;
-    }
-    
-    .gift-title {
-      font-size: 1.5rem;
-      color: #333;
-      margin-bottom: 1rem;
-    }
-    
-    .gift-description {
-      color: #666;
-      line-height: 1.6;
-      margin-bottom: 1.5rem;
-    }
-    
-    /* Section FAQ */
-    .faq-section {
-      max-width: 900px;
-      margin: 0 auto 5rem;
-      padding: 0 1rem;
-    }
-    
-    .faq-section h2 {
-      text-align: center;
-      font-size: 2.2rem;
-      font-weight: 300;
-      color: #333;
-      margin-bottom: 2.5rem;
-      position: relative;
-    }
-    
-    .faq-section h2:after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 3px;
-      background: #b28b51;
-    }
-    
-    .faq-item {
-      background: #fff;
-      border-radius: 8px;
-      margin-bottom: 1rem;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-      overflow: hidden;
-    }
-    
-    .faq-question {
-      padding: 1.5rem;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 1.1rem;
-      font-weight: 500;
-      color: #333;
-    }
-    
-    .faq-question i {
-      transition: transform 0.3s ease;
-    }
-    
-    .faq-answer {
-      padding: 0 1.5rem;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease, padding 0.3s ease;
-      color: #666;
-      line-height: 1.6;
-    }
-    
-    .faq-item.active .faq-answer {
-      max-height: 300px;
-      padding: 0 1.5rem 1.5rem;
-    }
-    
-    .faq-item.active .faq-question i {
-      transform: rotate(180deg);
-    }
-    
-    /* Responsive */
-    @media (max-width: 1024px) {
-      .offers-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-    
     @media (max-width: 768px) {
+      .page-header {
+        margin: 1.5rem 0 2rem;
+      }
+      
       .page-header h1 {
         font-size: 2.3rem;
       }
       
-      .offers-grid {
-        grid-template-columns: 1fr;
+      .page-header p {
+        font-size: 1rem;
+        padding: 0 0.5rem;
+      }
+      
+      .castle-rental {
+        margin-bottom: 3rem;
       }
       
       .castle-container {
         flex-direction: column;
+        gap: 0;
       }
       
       .castle-image {
         height: 300px;
+        min-width: 100%;
+      }
+      
+      .castle-details {
+        padding: 1.5rem;
+        min-width: 100%;
+      }
+      
+      .castle-details h3 {
+        font-size: 1.5rem;
+        text-align: center;
       }
       
       .castle-features {
         grid-template-columns: 1fr;
+        gap: 0.75rem;
       }
       
-      .gift-container {
-        flex-direction: column;
+      .castle-feature {
+        justify-content: center;
+        text-align: center;
       }
     }
     
@@ -433,33 +165,35 @@
       }
       
       .page-header p {
-        font-size: 1rem;
+        font-size: 0.95rem;
+        line-height: 1.5;
       }
       
-      .offer-content {
-        padding: 1.25rem;
-      }
-      
-      .offer-title {
-        font-size: 1.3rem;
-      }
-      
-      .price-amount {
-        font-size: 1.5rem;
+      .castle-image {
+        height: 250px;
       }
       
       .castle-details {
-        padding: 1.5rem;
+        padding: 1.25rem;
       }
       
       .castle-details h3 {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
       }
       
-      .faq-section h2,
-      .gift-section h2,
-      .castle-rental h2 {
-        font-size: 1.8rem;
+      .castle-description {
+        font-size: 0.95rem;
+        text-align: justify;
+      }
+      
+      .castle-feature {
+        font-size: 0.9rem;
+      }
+      
+      .btn {
+        width: 100%;
+        text-align: center;
+        padding: 1rem;
       }
     }
   </style>
@@ -469,7 +203,7 @@
     <div class="logo-title">
       <a href="index.html">
         <div class="logo">
-          <img src="images/logo.jpg" alt="Logo Château de Goville" class="logo">
+          <img src="images/logo.svg" alt="Logo Château de Goville" class="logo">
         </div>
         <hr class="separation" />
         <span class="site-name">Château de Goville</span>
@@ -497,7 +231,8 @@
       <h1>Exclusive Rental</h1>
       <p>The entire domain can be rented out for special events, such as weddings, family and friends gatherings, or corporate retreats. Enjoy complete privacy in a truly exceptional setting.</p>
     </section>
-      
+
+    <section class="castle-rental">
       <div class="castle-container">
         <div class="castle-image">
           <img src="images/chateau.jpg" alt="Private Castle Rental">
@@ -528,7 +263,6 @@
         </div>
       </div>
     </section>
-
   </main>
 
   <footer class="site-footer">
@@ -549,61 +283,5 @@
       <a href="contact.html" class="btn">Contact Us</a>
     </div>
   </footer>
-
-  <script>
-    // Script pour la page des offres
-    document.addEventListener('DOMContentLoaded', function() {
-      // Menu toggle pour mobile
-      const toggle = document.getElementById("menu-toggle");
-      const nav = document.querySelector(".main-nav");
-      
-      if (toggle && nav) {
-        toggle.addEventListener("click", function() {
-          nav.classList.toggle("active");
-          toggle.classList.toggle("active");
-        });
-      }
-      
-      // Fermer le menu en cliquant à l'extérieur
-      document.addEventListener("click", function(e) {
-        if (nav && nav.classList.contains("active") && 
-            !nav.contains(e.target) && 
-            e.target !== toggle) {
-          nav.classList.remove("active");
-          toggle.classList.remove("active");
-        }
-      });
-      
-      // FAQ accordéon
-      const faqItems = document.querySelectorAll('.faq-item');
-      
-      faqItems.forEach(item => {
-        const question = item.querySelector('.faq-question');
-        
-        question.addEventListener('click', () => {
-          item.classList.toggle('active');
-        });
-      });
-      
-      // Animation pour les cartes d'offres
-      const offerCards = document.querySelectorAll('.offer-card');
-      
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.style.opacity = 1;
-            entry.target.style.transform = 'translateY(0)';
-          }
-        });
-      }, { threshold: 0.1 });
-      
-      offerCards.forEach(card => {
-        card.style.opacity = 0;
-        card.style.transform = 'translateY(20px)';
-        card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-        observer.observe(card);
-      });
-    });
-  </script>
 </body>
 </html>
