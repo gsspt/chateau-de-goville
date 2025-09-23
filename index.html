@@ -243,6 +243,8 @@
     }
     
     .feature-content p {
+      text-align:justify;
+      text-indent: 3%;
       color: #666;
       margin-bottom: 1.5rem;
     }
@@ -275,12 +277,36 @@
     }
     
     @media (max-width: 768px) {
+
+      .page-header {
+        margin: 1.5rem 0 2rem;
+      }
+      
+      .page-header h1 {
+        font-size: 2.3rem;
+      }
+      
+      .page-header p {
+        font-size: 1rem;
+        text-align: justify;
+        padding: 0 0.5rem;
+      }
+
+      .feature-content h3 {
+      font-size: 1.3rem;
+      }
+    
+      .feature-content p {
+        font-size: 1rem;
+        text-align: justify;
+      }
+
       .hero-carousel {
         height: 50vh;
         min-height: 400px;
         margin: 1rem;
       }
-      
+
       .carousel-nav {
         width: 40px;
         height: 40px;
@@ -304,6 +330,17 @@
     }
     
     @media (max-width: 480px) {
+      
+      .page-header h1 {
+        font-size: 2rem;
+      }
+      
+      .page-header p {
+        text-align: justify;
+        font-size: 0.95rem;
+        line-height: 1.5;
+      }
+     
       .hero-carousel {
         height: 40vh;
         min-height: 300px;
@@ -545,6 +582,31 @@
         });
       }
     });
+
+    document.addEventListener('DOMContentLoaded', function() {
+    const featureCards = document.querySelectorAll('.feature-card');
+    
+    featureCards.forEach(card => {
+        card.style.cursor = 'pointer';
+        
+        card.addEventListener('click', function(e) {
+            // Empêche le clic si on clique sur un lien à l'intérieur
+            if (e.target.tagName === 'A' || e.target.closest('a')) {
+                return;
+            }
+            
+            // Détermine la page de destination selon le contenu
+            const title = this.querySelector('h3').textContent;
+            let targetUrl = 'index.html';
+            
+            if (title.includes('Rooms')) targetUrl = 'rooms.html';
+            else if (title.includes('Rental')) targetUrl = 'exclusive-rental.html';
+            else if (title.includes('Region')) targetUrl = 'region.html';
+            
+            window.location.href = targetUrl;
+        });
+    });
+});
   </script>
 </body>
 </html>
