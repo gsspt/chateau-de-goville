@@ -293,38 +293,108 @@
       }
       
       .room-title {
-        font-size: 1.6rem;
+        font-size: 1.8rem;
       }
       
       .room-actions {
         flex-direction: column;
+        align-items: center;
+      }
+      
+      .btn, .btn-secondary {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 0.5rem;
       }
     }
     
     @media (max-width: 480px) {
+      .page-header {
+        margin: 1rem 0 2rem;
+      }
+      
       .page-header h1 {
         font-size: 2rem;
       }
       
       .page-header p {
         font-size: 1rem;
+        padding: 0 0.5rem;
       }
       
       .room-carousel {
-        height: 350px;
+        height: 300px;
       }
       
       .room-carousel-nav {
         width: 35px;
         height: 35px;
+        font-size: 0.9rem;
+      }
+      
+      .room-carousel-prev {
+        left: 10px;
+      }
+      
+      .room-carousel-next {
+        right: 10px;
+      }
+      
+      .room-content {
+        padding: 1.25rem;
+      }
+      
+      .room-title {
+        font-size: 1.6rem;
+        text-align: center;
+      }
+      
+      .room-type {
+        display: block;
+        text-align: center;
+        margin: 0 auto 1.5rem;
+        width: fit-content;
+      }
+      
+      .room-description {
+        font-size: 1rem;
+        text-align: justify;
+      }
+      
+      .room-features {
+        justify-content: center;
+        gap: 0.75rem;
+      }
+      
+      .room-feature {
+        flex: 0 0 calc(50% - 0.75rem);
+        font-size: 0.9rem;
+      }
+      
+      .amenities {
+        margin: 3rem auto;
       }
       
       .amenities h2 {
         font-size: 1.8rem;
+        margin-bottom: 2rem;
       }
       
       .amenities-grid {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      
+      .amenity-item {
+        padding: 1.5rem 1rem;
+      }
+      
+      .amenity-icon {
+        font-size: 2rem;
+      }
+      
+      .amenity-name {
+        font-size: 1.1rem;
       }
     }
   </style>
@@ -334,7 +404,7 @@
     <div class="logo-title">
       <a href="index.html">
         <div class="logo">
-          <img src="images/logo.jpg" alt="Logo Château de Goville" class="logo">
+          <img src="images/logo.svg" alt="Logo Château de Goville" class="logo">
         </div>
         <hr class="separation" />
         <span class="site-name">Château de Goville</span>
@@ -366,9 +436,6 @@
     </section>
 
     <div class="rooms-container">
-
-
-
       <!-- Chambre Député -->
       <article class="room">
         <div class="room-carousel" id="room2-carousel">
@@ -466,7 +533,6 @@
           </div>
         </div>
       </article>
-
 
       <!-- Chambre de la Reine Hortense -->
       <article class="room">
@@ -593,27 +659,7 @@
       // Initialiser tous les carrousels des chambres
       initRoomCarousels();
       
-      // Menu toggle pour mobile
-      const toggle = document.getElementById("menu-toggle");
-      const nav = document.querySelector(".main-nav");
-      
-      if (toggle && nav) {
-        toggle.addEventListener("click", function() {
-          nav.classList.toggle("active");
-          toggle.classList.toggle("active");
-        });
-      }
-      
-      // Fermer le menu en cliquant à l'extérieur
-      document.addEventListener("click", function(e) {
-        if (nav && nav.classList.contains("active") && 
-            !nav.contains(e.target) && 
-            e.target !== toggle) {
-          nav.classList.remove("active");
-          toggle.classList.remove("active");
-        }
       });
-    });
     
     function initRoomCarousels() {
       const roomCarousels = document.querySelectorAll('.room-carousel');
@@ -624,6 +670,8 @@
         const dots = carousel.querySelectorAll('.room-carousel-dot');
         const prevBtn = carousel.querySelector('.room-carousel-prev');
         const nextBtn = carousel.querySelector('.room-carousel-next');
+        
+        if (!container || slides.length === 0) return;
         
         let currentIndex = 0;
         let autoPlayInterval;
@@ -689,6 +737,9 @@
         carousel.addEventListener('mouseleave', () => {
           startAutoPlay();
         });
+        
+        // Initialiser l'affichage
+        updateCarousel();
       });
     }
   </script>
