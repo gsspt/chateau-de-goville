@@ -119,32 +119,56 @@
       max-width: 600px;
       margin: 0 auto;
     }
+ 
+    /* Titre */
     
-    /* Section historique */
-    .history {
-      max-width: 900px;
-      margin: 4rem auto;
-      padding: 3rem;
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    .title {
+      text-align: left;
+      margin: 3rem 4rem 0rem;
+      padding: 0 1rem;
     }
-    
-    .history h1 {
+    .title h1 {
       font-family: 'Garamond';
-      text-align: center;
-      margin-bottom: 2rem;
+      font-size: 2.4rem;
       font-weight: 300;
-      font-size: 2.5rem;
       color: #333;
+      margin-bottom: 1rem;
       position: relative;
-      padding-bottom: 15px;
+      display: inline-block;
     }
     
-    .history h1:after {
+    .title h1:after {
       content: '';
       position: absolute;
-      bottom: 0;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: #b28b51;
+    }
+
+    /* Section historique */
+    .page-header {
+      text-align: center;
+      margin: 2rem 0 3rem;
+      padding: 0 1rem;
+    }
+    
+    .page-header h1 {
+      font-family: 'Garamond';
+      font-size: 2.8rem;
+      font-weight: 300;
+      color: #333;
+      margin-bottom: 1rem;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .page-header h1:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
       left: 50%;
       transform: translateX(-50%);
       width: 80px;
@@ -152,12 +176,14 @@
       background: #b28b51;
     }
     
-    .history p {
-      line-height: 1.8;
+    .page-header p {
       text-align: justify;
-      color: #555;
-      margin-bottom: 1.5rem;
+      text-indent: 3%;
+      max-width: 70rem;
+      margin: 0 auto;
+      color: #666;
       font-size: 1.1rem;
+      line-height: 1.6;
     }
     
     /* Section features */
@@ -272,15 +298,6 @@
         font-size: 1rem;
       }
       
-      .history {
-        padding: 2rem 1.5rem;
-        margin: 3rem 1rem;
-      }
-      
-      .history h1 {
-        font-size: 2rem;
-      }
-      
       .features {
         gap: 1.5rem;
       }
@@ -309,16 +326,14 @@
         display: none;
       }
       
-      .history {
-        padding: 1.5rem 1rem;
+      .features {
+        padding: 0 1rem;
+        margin: 2rem auto;
       }
       
-      .history h1 {
-        font-size: 1.8rem;
-      }
-      
-      .history p {
-        font-size: 1rem;
+      .feature-card {
+        min-width: 100%;
+        margin-bottom: 1.5rem;
       }
     }
   </style>
@@ -328,7 +343,7 @@
     <div class="logo-title">
       <a href="index.html">
         <div class="logo">
-          <img src="images/logo.jpg" alt="Logo Château de Goville" class="logo">
+          <img src="images/logo.svg" alt="Logo Château de Goville" class="logo">
         </div>
         <hr class="separation" />
         <span class="site-name">Château de Goville</span>
@@ -352,36 +367,14 @@
   </header>
 
   <main>
-    <section class="hero-carousel">
-      <div class="carousel-container" id="carousel">
-        <div class="carousel-slide">
-          <img src="images/chateau.jpg" alt="Vue du château">
-        </div>
-        <div class="carousel-slide">
-          <img src="images/grandsalon.jpg" alt="Grand salon">
-        </div>
-        <div class="carousel-slide">
-          <img src="images/salondemusique.jpg" alt="Jardin du château">
-        </div>
-        <div class="carousel-slide">
-          <img src="images/jardinhaut.jpg" alt="Chambre d'hôte">
-        </div>
-      </div>
-      
-      <button class="carousel-nav carousel-prev">
-        <i class="fas fa-chevron-left"></i>
-      </button>
-      <button class="carousel-nav carousel-next">
-        <i class="fas fa-chevron-right"></i>
-      </button>
-      
-      <div class="carousel-controls">
-        <div class="carousel-dot active"></div>
-        <div class="carousel-dot"></div>
-        <div class="carousel-dot"></div>
-        <div class="carousel-dot"></div>
-      </div>
-    </section>
+
+    <section class="page-header">
+      <h1>The Château de Goville</h1>
+      <br>
+      <br>
+      <p>Located in the heart of Normandy, the Château de Goville is an architectural jewel dating back to the 18th century. Surrounded by a lush park and French-style gardens, this historic estate has been lovingly restored to offer its guests an authentic and refined experience. Once a summer residence to an aristocratic family, the château has stood the test of time while preserving its charm and elegance. Today, we invite you to discover the French art of living in an exceptional setting, by either booking a private room, or renting out the entire property.</p>
+      <p>We'll warmly welcome you and advise you through your stay, whether you come for a romantic night, a family weekend, or a special event reception.</p>
+    </section>  
 
     <section class="features">
       <div class="feature-card">
@@ -420,11 +413,39 @@
       </div>
     </section>
 
-    <section class="history">
-      <h1>The Château</h1>
-      <p>The Château de Goville, located in the heart of Normandy, is an architectural jewel dating back to the 18th century. Surrounded by a lush park and French-style gardens, this historic estate has been lovingly restored to offer its guests an authentic and refined experience.</p>
-      <p>Once a summer residence to an aristocratic family, the château has stood the test of time while preserving its charm and elegance. Today, we invite you to discover the French art of living in an exceptional setting, by either booking a private room, or renting out the entire property.</p>
-      <p>We'll warmly welcome you and advise you through your stay, whether you come for a romantic night, a family weekend, or a special event reception.</p>
+    <section class="title">
+      <h1>Gallery</h1>
+    </section>
+
+    <section class="hero-carousel">
+      <div class="carousel-container" id="carousel">
+        <div class="carousel-slide">
+          <img src="images/chateau.jpg" alt="Vue du château">
+        </div>
+        <div class="carousel-slide">
+          <img src="images/grandsalon.jpg" alt="Grand salon">
+        </div>
+        <div class="carousel-slide">
+          <img src="images/salondemusique.jpg" alt="Jardin du château">
+        </div>
+        <div class="carousel-slide">
+          <img src="images/jardinhaut.jpg" alt="Chambre d'hôte">
+        </div>
+      </div>
+      
+      <button class="carousel-nav carousel-prev">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button class="carousel-nav carousel-next">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+      
+      <div class="carousel-controls">
+        <div class="carousel-dot active"></div>
+        <div class="carousel-dot"></div>
+        <div class="carousel-dot"></div>
+        <div class="carousel-dot"></div>
+      </div>
     </section>
 
   </main>
@@ -501,8 +522,8 @@
       }
       
       // Événements pour les boutons de navigation
-      nextBtn.addEventListener('click', nextSlide);
-      prevBtn.addEventListener('click', prevSlide);
+      if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+      if (prevBtn) prevBtn.addEventListener('click', prevSlide);
       
       // Événements pour les points indicateurs
       dots.forEach((dot, index) => {
@@ -513,14 +534,16 @@
       startAutoPlay();
       
       // Mettre en pause le défilement automatique quand la souris est sur le carrousel
-      carousel.addEventListener('mouseenter', () => {
-        clearInterval(autoPlayInterval);
-      });
-      
-      // Reprendre le défilement automatique quand la souris quitte le carrousel
-      carousel.addEventListener('mouseleave', () => {
-        startAutoPlay();
-      });
+      if (carousel) {
+        carousel.addEventListener('mouseenter', () => {
+          clearInterval(autoPlayInterval);
+        });
+        
+        // Reprendre le défilement automatique quand la souris quitte le carrousel
+        carousel.addEventListener('mouseleave', () => {
+          startAutoPlay();
+        });
+      }
     });
   </script>
 </body>
