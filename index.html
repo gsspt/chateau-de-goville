@@ -420,10 +420,10 @@
     <nav class="main-nav">
       <ul>
         <li><a href="index.html">The Castle</a></li>
-        <li><a href="rooms.html">Our Rooms</a></li>
-        <li><a href="exclusive-rental.html">Exclusive Rental</a></li>
-        <li><a href="region.html">The Region</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="/rooms/">Our Rooms</a></li>
+        <li><a href="/exclusive-rental/">Exclusive Rental</a></li>
+        <li><a href="/region/">The Region</a></li>
+        <li><a href="/contact/">Contact Us</a></li>
         <li><a href="https://www.booking.com/Share-5GEzc6" target="_blank" class="booking-btn">Booking</a></li>
       </ul>
     </nav>
@@ -447,7 +447,7 @@
         <div class="feature-content">
           <h3>Our Rooms</h3>
           <p>Discover our exquisite rooms, historically preserved and fitted out with modern comfort. Available from the <b>1st of June to the 31st of August</b>.</p>
-          <a href="rooms.html" class="feature-link">See the rooms <i class="fas fa-arrow-right"></i></a>
+          <a href="/rooms/" class="feature-link">See the rooms <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
       
@@ -458,7 +458,7 @@
         <div class="feature-content">
           <h3>Exclusive Rental</h3>
           <p>Opt for a reservation of the entire domain for special events, <b>from the 1st of September to 31st of May</b>, according to availability, for <b>up to 25 guests</b>.</p>
-          <a href="exclusive-rental.html" class="feature-link">Rent the entire domain <i class="fas fa-arrow-right"></i></a>
+          <a href="/exclusive-rental/" class="feature-link">Rent the entire domain <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
 
@@ -471,7 +471,7 @@
           <p>Explore the rich historical and gastronomical heritage of Normandy.</p>
           <br>
           <br>
-          <a href="region.html" class="feature-link">Discover <i class="fas fa-arrow-right"></i></a>
+          <a href="/region/" class="feature-link">Discover <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
     </section>
@@ -528,7 +528,7 @@
       <a href="https://www.instagram.com/chateaudegoville/" target="_blank">
         <i class="fab fa-instagram"></i>
       </a>
-      <a href="contact.html" class="btn">Contact Us</a>
+      <a href="/contact/" class="btn">Contact Us</a>
     </div>
   </footer>
 
@@ -625,9 +625,9 @@
             const title = this.querySelector('h3').textContent;
             let targetUrl = 'index.html';
             
-            if (title.includes('Rooms')) targetUrl = 'rooms.html';
-            else if (title.includes('Rental')) targetUrl = 'exclusive-rental.html';
-            else if (title.includes('Region')) targetUrl = 'region.html';
+            if (title.includes('Rooms')) targetUrl = '/rooms/';
+            else if (title.includes('Rental')) targetUrl = '/exclusive-rental/';
+            else if (title.includes('Region')) targetUrl = '/region/';
             
             window.location.href = targetUrl;
         });
