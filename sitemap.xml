@@ -7,25 +7,31 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>http://chateaudegoville.com/rooms</loc>
+    <loc>http://chateaudegoville.com/index.html</loc>
     <lastmod>2025-09-13</lastmod>
     <changefreq>yearly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>http://chateaudegoville.com/exclusive-rental</loc>
+    <loc>http://chateaudegoville.com/rooms.html</loc>
+    <lastmod>2025-09-13</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>http://chateaudegoville.com/exclusive-rental.html</loc>
     <lastmod>2025-09-13</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://chateaudegoville.com/region</loc>
+    <loc>http://chateaudegoville.com/region.html</loc>
     <lastmod>2025-09-13</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>http://chateaudegoville.com/contact</loc>
+    <loc>http://chateaudegoville.com/contact.html</loc>
     <lastmod>2025-09-13</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
