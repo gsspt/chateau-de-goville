@@ -1,0 +1,8 @@
+# Redirections depuis les anciennes URLs .html vers les nouvelles URLs sans .html
+/rooms.html /rooms/ 301
+/exclusive-rental.html /exclusive-rental/ 301
+/region.html /region/ 301
+/contact.html /contact/ 301
+
+# Redirections pour la page d'accueil en double
+/index.html / 301
