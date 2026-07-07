@@ -158,19 +158,15 @@ main {
 .site-footer {
   background: #f8f8f8;
   padding: 1.5rem 2rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
   gap: 2rem;
-  flex-wrap: wrap;
 }
 
 .footer-info {
   font-size: 0.9rem;
   text-align: left;
-  flex: 1 1 auto;
-  min-width: 180px;
   line-height: 1.4;
 }
 
@@ -179,9 +175,7 @@ main {
 }
 
 .footer-newsletter {
-  flex: 0 1 auto;
-  min-width: 420px;
-  order: 2;
+  justify-self: center;
 }
 
 .footer-newsletter iframe {
@@ -193,7 +187,6 @@ main {
   align-items: center;
   justify-content: flex-end;
   gap: 1.2rem;
-  flex: 0 1 auto;
 }
 
 .footer-links a {
@@ -400,27 +393,22 @@ main {
   }
   
   .site-footer {
-    flex-direction: column;
+    grid-template-columns: 1fr;
     align-items: center;
     padding: 1.5rem;
   }
 
   .footer-info {
     text-align: center;
-    order: 1;
-    min-width: auto;
-    width: 100%;
   }
 
   .footer-newsletter {
-    order: 2;
-    min-width: auto;
+    justify-self: center;
     width: 100%;
     max-width: 420px;
   }
 
   .footer-links {
-    order: 3;
     justify-content: center;
     width: 100%;
   }
